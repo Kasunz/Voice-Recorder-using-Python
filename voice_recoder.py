@@ -20,10 +20,16 @@ class VoiceRecoder:
             sd.wait() # wait until recoding is finished
 
         except Exception as e:
-            print(f"Error recoding audio {e}")
+            print(f"Error recoding audio: {e}")
             return None
 
-
+    def save_audio(self, audio_data):
+        """Save the recorded audio to a wav file """
+        try:
+            wavio.write(self.filename, audio_data, self.sample_rate, sampwidth=2 )
+            print(f"Recording save to {self.filename}")
+        except Exception as e:
+            print(f"Error saving audio: {e}")
 
 
 
