@@ -31,5 +31,21 @@ class VoiceRecoder:
         except Exception as e:
             print(f"Error saving audio: {e}")
 
+    def playing_audio(self, audio_data):
+        """Play the recorded audio"""
+        try:
+            print("playing back the recording... ")
+            sd.play(audio_data, self.sample_rate)
+            sd.wait()
+        except Exception as e:
+            print(f"Error playing audio: {e}")
+
+    def start_recording(self):
+        """Start the recording process"""
+        audio_data = self.record_audio()
+        if audio_data is not None:
+            self.save_audio(audio_data)
+            if self.play_after:
+                self.playing_audio(audio_data)
 
 
