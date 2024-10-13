@@ -12,6 +12,17 @@ class VoiceRecoder:
         self.sample_rate = sample_rate
         self.play_after = play_after
 
+    def record_audio(self):
+        """Record the audio for given duration """
+        print(f"Recording for {self.duration} seconds...")
+        try:
+            audio_data = sd.rec(int(self.duration * self.sample_rate), samplerate = self.sample_rate, channels= 2)
+            sd.wait() # wait until recoding is finished
+
+        except Exception as e:
+            print(f"Error recoding audio {e}")
+            return None
+
 
 
 
